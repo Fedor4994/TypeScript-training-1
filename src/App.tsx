@@ -49,10 +49,36 @@ function App() {
 
   const myHouse = new MyHouse(key);
 
-  myHouse.openDoor(person.getKey());
-  myHouse.comeIn(person);
-  myHouse.openDoor(terorist.getKey());
-  myHouse.comeIn(terorist);
+  // myHouse.openDoor(person.getKey());
+  // myHouse.comeIn(person);
+  // myHouse.openDoor(terorist.getKey());
+  // myHouse.comeIn(terorist);
+
+  function getPromise() {
+    return new Promise<Array<string | number>>((resolve) => {
+      resolve(["Text", 50]);
+    });
+  }
+
+  getPromise().then((data) => {
+    console.log(data);
+  });
+
+  type AllType = {
+    name: string;
+    position: number;
+    color: string;
+    weight: number;
+  };
+
+  function compare(top, bottom): AllType {
+    return {
+      name: top.name,
+      color: top.color,
+      position: bottom.position,
+      weight: bottom.weight,
+    };
+  }
 
   return (
     <div>
