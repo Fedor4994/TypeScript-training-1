@@ -71,15 +71,35 @@ function App() {
     weight: number;
   };
 
-  function compare(top, bottom): AllType {
+  function compare(
+    top: Pick<AllType, "name" | "color">,
+    bottom: Pick<AllType, "position" | "weight">
+  ): AllType {
     return {
       name: top.name,
       color: top.color,
+
       position: bottom.position,
       weight: bottom.weight,
     };
   }
 
+  function merge<T extends object, U extends object>(objA: T, objB: U) {
+    return Object.assign(objA, objB);
+  }
+
+  interface Props {
+    title: string;
+  }
+  class Component<T extends object> {
+    constructor(public props: T) {}
+  }
+
+  class Page extends Component<Props> {
+    pageInfo() {
+      console.log(this.props.title);
+    }
+  }
   return (
     <div>
       <Counter />
